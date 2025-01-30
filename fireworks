@@ -1,0 +1,66 @@
+import turtle
+import random
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("Fireworks Display")
+
+# Create a turtle for the fireworks
+firework = turtle.Turtle()
+firework.hideturtle()
+firework.speed(0)
+firework.width(2)
+
+# List of colors for the fireworks
+colors = ["red", "blue", "green", "yellow", "purple", "orange", "white"]
+
+def draw_firework(x, y, size, color):
+    firework.penup()
+    firework.goto(x, y)
+    firework.pendown()
+    firework.color(color)
+    for _ in range(36):
+        firework.forward(size)
+        firework.backward(size)
+        firework.right(10)
+
+def shoot_firework():
+    # Random starting position
+    start_x = random.randint(-300, 300)
+    start_y = random.randint(-300, -100)
+    color = random.choice(colors)
+    size = random.randint(20, 150)
+
+    # Move the firework upwards
+    firework.penup()
+    firework.goto(start_x, start_y)
+    firework.pendown()
+
+    for i in range(60):
+        firework.goto(start_x, start_y + i * 5)
+
+    # draw the explosion
+    draw_firework(start_x, start_y + 300, size, color)
+
+# Simulate multiple fireworks going off
+for _ in range(7):  # Number of fireworks
+    shoot_firework()
+
+
+# Create a turtle for the fireworks
+firework = turtle.Turtle()
+firework.hideturtle()
+firework.speed(0)
+firework.width(2)
+
+# List of colors for the fireworks
+colors = ["red", "blue", "green", "yellow", "purple", "orange", "white"]
+
+
+
+# Keep the window open
+screen.mainloop()
+
+
+
