@@ -1,0 +1,38 @@
+# Currency Converter
+# Define exchange rates (These are just examples, you can update with real-time rates)
+exchange_rates = {
+    "USD": 4.0,        # Base currency (US Dollar)
+    "EUR": 0.85,       # Euro
+    "GBP": 0.75,       # British Pound
+    "JPY": 110.0,      # Japanese Yen
+    "INR": 74.0,       # Indian Rupee
+    "CAD": 1.25,       # Canadian Dollar
+    "AUD": 1.35,       # Australian Dollar
+    "CHF": 0.92,       # Swiss Franc
+}
+
+def convert_currency(amount, from_currency, to_currency):
+    if from_currency not in exchange_rates or to_currency not in exchange_rates:
+        return "Invalid currency code."
+    
+    if from_currency == "USD":
+        base_amount = amount
+    else:
+        base_amount = amount / exchange_rates[from_currency]
+    
+    converted_amount = base_amount * exchange_rates[to_currency]
+    return converted_amount
+
+# User Input
+amount = float(input("Enter the amount: "))
+from_currency = input("Enter the from currency code (e.g., USD, EUR, GBP): ").upper()
+to_currency = input("Enter the to currency code (e.g., USD, EUR, GBP): ").upper()
+
+# Conversion
+converted_amount = convert_currency(amount, from_currency, to_currency)
+
+if isinstance(converted_amount, str):
+    print(converted_amount)
+else:
+    print(f"{amount} {from_currency} is equal to {converted_amount:.2f} {to_currency}")
+
